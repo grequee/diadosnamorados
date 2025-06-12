@@ -15,7 +15,7 @@ const mensagens = [
   "Lembra do nosso primeiro encontro? todo aquele nervosismo... toda aquela insegurança no CLÃ e eu leve mente alterado da bebida kkkk",
   "Tudo isso era só o começo da nossa historia Dai. Ainda tinha muito por vir...",
   "Eu te amo tanto e tento sempre ao maximo te tirar sorrisos. Mesmo que eu seja meio doido as vezes mas não tem problema porque tu é que nem eu e isso que nos faz tão especial juntos!",
-  "Hoje, no Dia dos Namorados, só quero dizer: Eu te amo muito, e sou eternamente grato de ter ao meu lado Daielen 💖"
+  "Hoje, no Dia dos Namorados, só quero dizer: Eu te amo muito, e sou eternamente grato de te ter ao meu lado Daielen 💖"
 ];
 
 let paginaAtual = 0;
