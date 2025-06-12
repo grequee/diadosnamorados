@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz Dia dos Namorados 💖</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <div id="coracoes-container"></div>
+    <div id="petalas-container"></div>
+  <audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+</audio>
+
+
+  <div class="background">
+    <!-- Cada div é uma "foto colada" -->
+    <div class="foto" style="background-image: url('img/foto1.jpg');"></div>
+    <div class="foto" style="background-image: url('img/foto2.jpg');"></div>
+    <div class="foto" style="background-image: url('img/foto3.jpg');"></div>
+    <div class="foto" style="background-image: url('img/foto4.jpg');"></div>
+    <div class="foto" style="background-image: url('img/foto5.jpg');"></div>
+    <div class="foto" style="background-image: url('img/foto6.jpg');"></div>
+    <div class="foto" style="background-image: url('img/foto8.jpg');"></div>
+    <div class="foto" style="background-image: url('img/foto9.jpg');"></div>
+    <div class="foto" style="background-image: url('img/foto10.jpg');"></div>
+       <div class="foto" style="background-image: url('img/foto11.jpg');"></div>
+  </div>
+
+  <div class="overlay">
+    <div class="conteudo">
+  <div id="mensagem-inicial">
+    <button id="botao-revelar">💖 Uma mensagem para o amor da minha vida...</button>
+  </div>
+
+  <div id="mensagem-final" style="display: none;">
+  <div id="pagina-mensagem">
+    <p class="mensagem" id="texto-mensagem"></p>
+  </div>
+  <div class="navegacao">
+    <button id="anterior">◀️</button>
+    <span id="contador-pagina"></span>
+    <button id="proximo">▶️</button>
+  </div>
+</div>
+<div id="final-com-desnho" style="display: none; flex-direction: column; align-items: center;">
+  <div class="moldura-foto">
+    <img src="img/desenho.jpg" alt="Nosso desenho" />
+  </div>
+  <p class="legenda">com você meu mundo nem parece real de tão incrível</p>
+    <p id="dias-juntos" class="legenda"></p>
+
+</div>
+
+</div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

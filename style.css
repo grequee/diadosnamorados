@@ -1,0 +1,404 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  /* No desktop, overflow hidden para manter layout; no celular permitimos scroll */
+  overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Grade de fotos coladas */
+.background {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 colunas fixas */
+  grid-auto-rows: 1fr;
+  gap: 8px;
+  width: 100vw;
+  height: 100vh;
+  padding: 8px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background-color: #000;
+}
+
+/* Fotos com rotação */
+.foto {
+   min-height: 120px; /* ou 100px */  
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+  filter: brightness(0.95) contrast(1.05);
+  transition: transform 0.3s ease;
+}
+
+.foto:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+.foto:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+/* Camada escura por cima para destacar o texto */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem; /* Espaço nas bordas */
+  overflow-y: auto; /* Permitir scroll vertical */
+}
+
+/* Conteúdo da carta */
+.conteudo {
+  text-align: center;
+  color: #fff;
+  padding: 2rem;
+  max-width: 800px;
+  z-index: 2;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.mensagem {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Botões */
+button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  background-color: #fff;
+  color: #bb377d;
+  cursor: pointer;
+  transition: background 0.3s;
+  min-width: 100px;
+}
+
+button:hover {
+  background-color: #f3f3f3;
+}
+
+#coracoes-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.coracao {
+  position: absolute;
+  color: #ff69b4;
+  font-size: 24px;
+  animation: cair 5s linear infinite;
+  user-select: none;
+  opacity: 0.8;
+}
+
+@keyframes cair {
+  0% {
+    transform: translateY(-10%) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Botão principal */
+#botao-revelar {
+  padding: 1.2rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #ffb6c1, #ff69b4);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(255, 105, 180, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  animation: pulsar 1.5s infinite;
+  min-width: 240px;
+}
+
+#botao-revelar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px rgba(255, 105, 180, 0.5);
+}
+
+@keyframes pulsar {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+/* Caixa da mensagem */
+#pagina-mensagem {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: #fff;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  word-break: break-word; /* evita overflow de palavras */
+  max-width: 100%;
+}
+
+/* Navegação das páginas */
+.navegacao {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap; /* permite quebra no celular */
+}
+
+.navegacao button {
+  padding: 0.7rem 1.2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #bb377d;
+  cursor: pointer;
+  transition: background 0.3s;
+  min-width: 80px;
+}
+
+.navegacao button:hover {
+  background-color: #f3f3f3;
+}
+
+#contador-pagina {
+  font-size: 1rem;
+  color: #fff;
+  white-space: nowrap;
+  margin-top: 0.3rem;
+}
+
+/* Moldura da foto final */
+.moldura-foto {
+  border: 12px solid #5c3a1a;
+  padding: 8px;
+  background-color: #a67c39;
+  border-radius: 15px;
+  max-width: 90vw;
+  max-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.moldura-foto img {
+  border: 6px solid #fff;
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  max-height: 50vh;
+  object-fit: contain;
+  display: block;
+}
+
+/* Legenda da foto */
+.legenda {
+  font-style: italic;
+  color: #f3e2c9;
+  font-size: 1.2rem;
+  text-align: center;
+  text-shadow: 0 0 5px #8b5e3c;
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Contador amor */
+.dias-juntos {
+  font-size: 1.2rem;
+  color: #fff8f0;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 0 8px rgba(255, 192, 203, 0.4);
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ----------- MEDIA QUERIES para celular ----------- */
+@media (max-width: 768px) {
+  /* Reduzir colunas para 2 na grade para celulares/tablets */
+  .background {
+    grid-template-columns: repeat(2, 1fr);
+    height: auto; /* permite expandir */
+    padding: 6px;
+  }
+
+  /* Ajustar tamanho fonte e padding do conteúdo */
+  .conteudo {
+    padding: 1.5rem;
+  }
+
+  .mensagem {
+    font-size: 1.1rem;
+  }
+
+  #botao-revelar {
+    min-width: 200px;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  .navegacao button {
+    min-width: 70px;
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+  }
+
+  #pagina-mensagem {
+    font-size: 1.1rem;
+    min-height: 160px;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Para telas bem pequenas (celulares) */
+
+ .background {
+  height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .background {
+    height: auto; /* deixa crescer de acordo com o conteúdo */
+    min-height: 100vh; /* mantém a altura mínima */
+  }
+}
+
+@media (max-width: 480px) {
+  .background {
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+
+  .conteudo {
+    padding: 1rem;
+  }
+
+  .mensagem {
+    font-size: 1rem;
+  }
+
+  #botao-revelar {
+    min-width: 180px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .navegacao {
+    gap: 0.5rem;
+  }
+
+  .navegacao button {
+    min-width: 60px;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  #pagina-mensagem {
+    font-size: 1rem;
+    min-height: 140px;
+    padding: 1rem;
+  }
+
+  .legenda, .dias-juntos {
+    font-size: 1rem;
+    max-width: 95vw;
+  }
+}
+#petalas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2; /* igual ao dos corações */
+}
+
+.petala {
+  position: absolute;
+  font-size: 22px;
+  opacity: 0.8;
+  animation: cairPetala 6s linear infinite;
+  user-select: none;
+}
+
+@keyframes cairPetala {
+  0% {
+    transform: translateY(-10%) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
